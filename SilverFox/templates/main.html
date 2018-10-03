@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>SilverFox</h1>
+<h2>Najnowsze zdjęcia</h2>
+<ul>
+{% for photo in photos %}
+    <p>{{ date_added|date }} - {{ photo.title }}</p>
+{% empty %}
+    <h2>Brak zdjęć</h2>
+{% endfor %}
+</ul>
+{% endblock %}
