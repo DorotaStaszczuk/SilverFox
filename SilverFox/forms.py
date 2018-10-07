@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from SilverFox.models import User, Photo
 
@@ -18,27 +19,27 @@ class AddPhotoForm(ModelForm):
         }
 
 
-class AddUserForm(ModelForm):
+class AddUserInfoForm(ModelForm):
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = ['login']
 
-
-class EditUserForm(forms.Form):
-    pass
 
 class EditPhotoForm(forms.Form):
     pass
 
+
 class LoginForm(forms.Form):
     login = forms.CharField(max_length=64)
-    password = forms.CharField(max_length=64, widget=forms.PasswordInput)
-
-
-
+    password = forms.CharField(max_length=64, widget=forms.PasswordInput, label="Hasło")
 
 
 class CommentForm(forms.Form):
     name = forms.CharField()
     url = forms.URLField()
     comment = forms.CharField()
+
+
+class MyUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User

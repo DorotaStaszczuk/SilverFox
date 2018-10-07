@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 CAMERA_NAME_CHOICES = (
@@ -26,7 +27,8 @@ CAMERA_NAME_CHOICES = (
     (21, 'Hasselblad 500C/M'),
     (22, 'Polaroid SX-70'),
     (23, 'Graflex Speed Graphic 4×5'),
-    (24, 'inny'),
+    (24, 'Camera obscura'),
+    (25, 'inny'),
 )
 
 FILM_TYPE_CHOICES = {
@@ -88,22 +90,26 @@ FILM_ISO_CHOICES = {
 
 
 # Create your models here.
-class User(models.Model):
-    login = models.CharField(max_length=128)
-    description = models.TextField(null=True)
+class User(AbstractUser):
+    description = models.TextField(null=True, verbose_name="Opis")
+    profile_image = models.ImageField(null=True, verbose_name="Zdjęcie profilowe")
+    # photo_set
 
 
 class Photo(models.Model):
-    title = models.CharField(max_length=64)
-    #file = models.ImageField()
+    title = models.CharField(max_length=64, verbose_name="Tytuł")
+    file = models.ImageField(null=True, verbose_name="Dodaj plik")
     date_added = models.DateTimeField(auto_now_add=True)
-    camera_name = models.IntegerField(choices=CAMERA_NAME_CHOICES, default=0)
-    film_type = models.IntegerField(choices=FILM_TYPE_CHOICES, default=0)
-    film_name = models.IntegerField(choices=FILM_NAME_CHOICES, default=0)
-    film_iso = models.IntegerField(choices=FILM_ISO_CHOICES, default=0)
-    film_options = models.BooleanField(default=False)
-    description = models.TextField(null=True)
-    photo_options = models.BooleanField(default=False)
-    favourite = models.BooleanField(default=False)
+    camera_name = models.IntegerField(choices=CAMERA_NAME_CHOICES, default=0, verbose_name="Aparat")
+    film_type = models.IntegerField(choices=FILM_TYPE_CHOICES, default=0, verbose_name="Typ filmu")
+    film_name = models.IntegerField(choices=FILM_NAME_CHOICES, default=0, verbose_name="Nazwa filmu")
+    film_iso = models.IntegerField(choices=FILM_ISO_CHOICES, default=0, verbose_name="Czułość filmu")
+    film_option1 = models.BooleanField(blank=True, default=False, verbose_name="przeterminowany")
+    film_option2 = models.BooleanField(blank=True, default=False, verbose_name="podczerwień")
+    description = models.TextField(blank=True, null=True, verbose_name="Opis")
+    photo_option1 = models.BooleanField(blank=True, default=False, verbose_name="Skan z negatywu")
+    photo_option2 = models.BooleanField(blank=True, default=False, verbose_name="Odbitka ciemniowa")
     user = models.ForeignKey('User', on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ('-date_added',)

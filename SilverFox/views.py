@@ -1,16 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import User, Photo
-from SilverFox.forms import AddPhotoForm, AddUserForm, EditPhotoForm, EditUserForm, LoginForm
+from SilverFox.forms import LoginForm, MyUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy, reverse
-from django.contrib.auth.forms import UserCreationForm
-
 
 
 # Create your views here.
@@ -18,8 +15,8 @@ class MainSiteView(ListView):
     model = Photo
     paginate_by = 50
     def get(self, request):
-
-        return render(request, template_name='main.html')
+        ctx = {'photos': Photo.objects.all()}
+        return render(request, 'main.html', ctx)
 
 
 class UserView(LoginRequiredMixin, DetailView):
@@ -32,14 +29,17 @@ class PhotoView(LoginRequiredMixin, DetailView):
 
 class AddPhotoView(LoginRequiredMixin, CreateView):
     model = Photo
-    exclude = ['date_added']
-    success_url = reverse_lazy("/photo")
+    fields = ('file', 'title', 'camera_name', 'film_type', 'film_name', 'film_iso', 'film_option1',
+              'film_option2', 'photo_option1', 'photo_option2', 'description')
 
+    def get_success_url(self):
+        return reverse('photo', kwargs={'pk': self.object.pk})
 
-class AddUserView(CreateView):
-    model = User
-    fields = '__all__'
-    success_url = reverse_lazy("/user")
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return redirect(self.get_success_url())
 
 
 class DeleteUser(LoginRequiredMixin, DeleteView):
@@ -52,10 +52,13 @@ class DeletePhoto(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("/user")
 
 
-class EditUser(LoginRequiredMixin, UpdateView):
+class EditUserView(LoginRequiredMixin, UpdateView):
     model = User
-    fields = '__all__'
+    fields = ('profile_image', 'description')
     template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('user', args=[self.object.pk])
 
 
 class EditPhoto(LoginRequiredMixin, UpdateView):
@@ -91,12 +94,15 @@ class LogoutView(LoginRequiredMixin, View):
 
 
 def signup(request):
+    if request.method == 'GET':
+        form = MyUserCreationForm()
+        return render(request, 'signup.html', {'form': form})
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('main')
     else:
-        form = UserCreationForm()
+        form = MyUserCreationForm()
     return render(request, 'form.html', {'form': form})

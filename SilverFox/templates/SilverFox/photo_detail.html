@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div id="bb">
+<p id="s1">Autor: {{ object.user }}</p>
+<p id="s2">Tytuł: {{ object.title }}</p>
+
+<img src="{{ photo.file.url }}">
+</div>
+{% endblock %}

@@ -1,39 +1,159 @@
-body {
+html {
     background-color: rgb(43, 43, 43);
-    line-height: 28px;
+}
+body {
 
 }
 
+section {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 100px auto 45px;
+    height: 100vh;
+}
 
-h1 {
+img {
+    height: 200px;
+}
+
+#profile {
+    height: 130px;
+}
+
+#menu {
+    text-align: right;
+    /*right: 5px;*/
+}
+
+.nav {
+    padding: 8px;
+    boarder: 1px black;
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+.spacer {
+    height: 70px;
+    box-shadow: 0 3px 5px;
+    position: absolute;
+    width:100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#header{
+    /*grid-row: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;*/
+    border-bottom: 3px black;
+    /*place-self: center;
+    text-align: center;*/
+    padding-top: 12px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+#content {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding-top: 100px;
+}
+
+#footer{
+    grid-row: 3;
+    position:fixed;
+    width:100%;
+    bottom:0;
+    left:0;
+    text-align: center;
+    padding: 20px;
+    color: dimgray;
+}
+
+
+#s1 {
+    grid-column: 1;
+    border: 8px black;
+}
+
+#s2 {
+    grid-column: 2;
+}
+
+.silverfox {
     color: silver;
     font-weight: bold;
     font-family: "Avenir Next";
-    font-size: 45px;
+    font-size: 55px;
+    padding-left: 15px;
+    padding: 8px;
+    boarder: 1px black;
+    position:absolute;
+    top:0;
+    left:0;
+    text-shadow: 3px 3px 5px black;
 }
 
 h2 {
-    margin:0;
     color: orangered;
     /*padding: 20px;*/
     font-size: 24px;
     font-family: "Arial Black";
  }
 
-#footer {
-    color: dimgray;
-    position: bottom;
-    align-items: flex-end;
-}
-
-#menu {
-    text-align: right;
-}
-
 form {
+    color: orangered;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+p {
+    color: grey;
+    font-size: 24px;
+}
+
+a:link {
+    color: grey;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: grey;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+    transition: all 1.3s ease-out;
+}
+
+a:active {
+    color: orangered;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#aa {
+    font-size: 40px;
     color: orangered;
 }
 
-a {
-    color: grey;
+#bb {
+    padding-top: 100px;
+}
+
+div {
+    padding: 10px;
+}
+
+li {
+    color: gray;
 }
