@@ -33,15 +33,6 @@ img {
     right:0;
 }
 
-.spacer {
-    height: 70px;
-    box-shadow: 0 3px 5px;
-    position: absolute;
-    width:100%;
-    top: 0;
-    left: 0;
-    right: 0;
-}
 
 #header{
     /*grid-row: 1;

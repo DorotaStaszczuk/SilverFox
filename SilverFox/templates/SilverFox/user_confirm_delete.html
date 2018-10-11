@@ -19,17 +19,23 @@
       <span class="nav">
           {% include "menu.html" %}
       </span>
-
   </header>
-    <div>
 
-    {% block content %}
-    {% endblock %}
+    <div id="user_detail">
+{% block content %}
+<div id="bb">
+    <form action="" method="post">{% csrf_token %}
+        <h2>Czy napewno chcesz usunąć konto {{ object }}?</h2>
+    <input type="submit" value="Tak, chcę" />
+            <a href="{% url 'user' pk=object.pk %}"><input type="button" value="Nie" /></a>
+    </form>
+</div>
+{% endblock %}
+
+    <div id="footer">
+      {% block footer %}
+        {#© Copyright 2018 by DS#}
+      {% endblock %}
     </div>
-    <!--<div id="footer">-->
-      <!--{% block footer %}-->
-        <!--{#© Copyright 2018 by DS#}-->
-      <!--{% endblock %}-->
-    <!--</div>-->
   </body>
 </html>

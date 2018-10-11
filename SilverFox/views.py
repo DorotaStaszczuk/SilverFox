@@ -42,9 +42,9 @@ class AddPhotoView(LoginRequiredMixin, CreateView):
         return redirect(self.get_success_url())
 
 
-class DeleteUser(LoginRequiredMixin, DeleteView):
+class DeleteUserView(LoginRequiredMixin, DeleteView):
     model = User
-    success_url = reverse_lazy("/main")
+    success_url = reverse_lazy("main")
 
 
 class DeletePhoto(LoginRequiredMixin, DeleteView):

@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from SilverFox.views import MainSiteView, UserView, PhotoView, LoginView, LogoutView, signup, AddPhotoView, \
-    EditUserView
+    EditUserView, DeleteUserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^logout$', LogoutView.as_view(), name="logout"),
     url(r'^signup$', signup, name="signup"),
     url(r'^add_photo$', AddPhotoView.as_view(), name="add-photo"),
+    url(r'^delete_user/(?P<pk>(\d)+)/$', DeleteUserView.as_view(), name="delete-user"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

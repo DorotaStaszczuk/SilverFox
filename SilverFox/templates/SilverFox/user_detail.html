@@ -21,7 +21,6 @@
       </span>
 
   </header>
-    <!--<div class="spacer"></div>-->
     <div id="user_detail">
 
     {% block content %}
@@ -40,6 +39,7 @@
 
         <a href="{% url 'edit-user' pk=object.pk %}"><input type="button" value="Edytuj profil" /></a>
         <a href="{% url 'add-photo' %}"><input type="button" value="Dodaj nowe zdjęcie" /></a>
+        <a href="{% url 'delete-user' pk=object.pk %}"><input type="button" value="Usuń konto" /></a>
 
     <h2>Najnowsze zdjęcia</h2>
 
