@@ -24,17 +24,17 @@
     <div id="user_detail">
 
     {% block content %}
-<div id="bb">
+    <div id="bb">
     {% if not object.profile_image %}
-    <p>Brak zdjęcia profilowego</p>
+        <p>Brak zdjęcia profilowego</p>
     {% else %}
-    <p id="aa"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
+        <p id="aa"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
     {% endif %}
 
     {% if object.description is None %}
-    <p>Brak opisu</p>
+        <p>Brak opisu</p>
     {% else %}
-    <p>{{ object.description }}</p>
+        <p>{{ object.description }}</p>
     {% endif %}
 
         <a href="{% url 'edit-user' pk=object.pk %}"><input type="button" value="Edytuj profil" /></a>
@@ -43,21 +43,20 @@
 
     <h2>Najnowsze zdjęcia</h2>
 
-{% for photo in object.photo_set.all %}
-<a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
-{% empty %}
-<h2>Brak zdjęć</h2>
-{% endfor %}
+    {% for photo in object.photo_set.all %}
+    <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
+    {% empty %}
+    <h2>Brak zdjęć</h2>
+    {% endfor %}
     </div>
-
-    {% endblock %}
-    </div>
-    <div id="footer">
-      {% block footer %}
-        {#© Copyright 2018 by DS#}
-      {% endblock %}
-    </div>
-  </body>
-</html>
+        {% endblock %}
+        </div>
+        <div id="footer">
+          {% block footer %}
+            {#© Copyright 2018 by DS#}
+          {% endblock %}
+        </div>
+      </body>
+    </html>
 
 

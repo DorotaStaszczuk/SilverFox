@@ -1,9 +1,7 @@
 html {
     background-color: rgb(43, 43, 43);
 }
-body {
 
-}
 
 section {
     display: grid;
@@ -22,7 +20,6 @@ img {
 
 #menu {
     text-align: right;
-    /*right: 5px;*/
 }
 
 .nav {
@@ -34,17 +31,12 @@ img {
 }
 
 
-#header{
-    /*grid-row: 1;
-    display: grid;
-    grid-template-columns: 2fr 1fr;*/
+/* #header{
     border-bottom: 3px black;
-    /*place-self: center;
-    text-align: center;*/
     padding-top: 12px;
     padding-bottom: 20px;
     position: relative;
-}
+} */
 
 #content {
     grid-row: 2;
@@ -143,8 +135,4 @@ a:active {
 
 div {
     padding: 10px;
-}
-
-li {
-    color: gray;
 }

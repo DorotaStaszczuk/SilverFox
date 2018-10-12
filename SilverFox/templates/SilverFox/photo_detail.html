@@ -3,9 +3,21 @@
 
 {% block content %}
 <div id="bb">
-<p id="s1">Autor: {{ object.user }}</p>
-<p id="s2">Tytuł: {{ object.title }}</p>
+    <p id="s1">Autor: {{ object.user }}</p>
+    <p id="s2">Tytuł: {{ object.title }}</p>
+    {% if object.description is None %}
+        <p>Brak opisu</p>
+    {% else %}
+        <p id="s2">Opis: {{ object.description }}</p>
+    {% endif %}
 
-<img src="{{ photo.file.url }}">
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'edit-photo' pk=object.pk %}"><input type="button" value="Edytuj zdjęcie" /></a>
+    <a href="{% url 'delete-photo' pk=object.pk %}"><input type="button" value="Usuń zdjęcie" /></a>
+    {% endif %}
+
+    <div>
+    <img src="{{ photo.file.url }}">
+    </div>
 </div>
 {% endblock %}

@@ -47,9 +47,10 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("main")
 
 
-class DeletePhoto(LoginRequiredMixin, DeleteView):
+class DeletePhotoView(LoginRequiredMixin, DeleteView):
     model = Photo
-    success_url = reverse_lazy("/user")
+    success_url = reverse_lazy("main")
+
 
 
 class EditUserView(LoginRequiredMixin, UpdateView):
@@ -61,7 +62,7 @@ class EditUserView(LoginRequiredMixin, UpdateView):
         return reverse('user', args=[self.object.pk])
 
 
-class EditPhoto(LoginRequiredMixin, UpdateView):
+class EditPhotoView(LoginRequiredMixin, UpdateView):
     model = Photo
     exclude = ['date_added']
     template_name_suffix = '_update_form'
