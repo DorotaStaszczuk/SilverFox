@@ -2,7 +2,6 @@ html {
     background-color: rgb(43, 43, 43);
 }
 
-
 section {
     display: grid;
     grid-template-columns: auto;
@@ -17,26 +16,6 @@ img {
 #profile {
     height: 130px;
 }
-
-#menu {
-    text-align: right;
-}
-
-.nav {
-    padding: 8px;
-    boarder: 1px black;
-    position: absolute;
-    top:0;
-    right:0;
-}
-
-
-/* #header{
-    border-bottom: 3px black;
-    padding-top: 12px;
-    padding-bottom: 20px;
-    position: relative;
-} */
 
 #content {
     grid-row: 2;
@@ -73,10 +52,9 @@ img {
     font-size: 55px;
     padding-left: 15px;
     padding: 8px;
-    boarder: 1px black;
     position:absolute;
     top:0;
-    left:0;
+    left: 5px;
     text-shadow: 3px 3px 5px black;
 }
 
@@ -135,4 +113,19 @@ a:active {
 
 div {
     padding: 10px;
+}
+
+#bar {
+    position: static;
+    background-color: rgb(43, 43, 43);
+    height: 90px;
+    border-bottom: 2px solid black;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 1px 20px black;
+    text-align: right;
+}
+
+body {
+    margin: 0;
 }
