@@ -64,8 +64,12 @@ class EditUserView(LoginRequiredMixin, UpdateView):
 
 class EditPhotoView(LoginRequiredMixin, UpdateView):
     model = Photo
+    fields = '__all__'
     exclude = ['date_added']
     template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('photo', args=[self.object.pk])
 
 
 class LoginView(View):
