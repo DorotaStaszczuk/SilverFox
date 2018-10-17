@@ -120,15 +120,17 @@ div {
     background-color: rgb(43, 43, 43);
     height: 90px;
     border-bottom: 2px solid black;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     box-shadow: 0 1px 20px black;
     text-align: right;
+    top: 30px;
+    padding-right: 20px;
+    padding-top: 5px;
 }
 
 #A {
     margin: 5px;
-
 }
 
 body {
