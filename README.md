@@ -20,3 +20,11 @@ Project is created with:
 
 ## Screenshots
 ![main](media/01.png)
+
+![main](media/02.png)
+
+![main](media/03.png)
+
+![main](media/04.png)
+
+![main](media/05.png)
