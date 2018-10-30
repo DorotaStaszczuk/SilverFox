@@ -19,12 +19,17 @@ Project is created with:
 * CSS
 
 ## Screenshots
+Main site
 ![main](media/01.png)
 
-![main](media/02.png)
+User page
+![user](media/02.png)
 
-![main](media/03.png)
+Photo page
+![photo](media/03.png)
 
-![main](media/04.png)
+Logging in
+![login](media/04.png)
 
-![main](media/05.png)
+Removing account
+![remove](media/05.png)
