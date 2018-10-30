@@ -9,7 +9,7 @@ idea/
 .media/
 media/
 *.jpg
-*.png
+
 
 # C extensions
 *.so

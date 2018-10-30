@@ -17,3 +17,6 @@ Project is created with:
 * Django
 * HTML
 * CSS
+
+## Screenshots
+![main](media/01.png)
