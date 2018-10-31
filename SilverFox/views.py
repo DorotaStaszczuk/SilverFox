@@ -14,6 +14,7 @@ from django.urls import reverse_lazy, reverse
 class MainSiteView(ListView):
     model = Photo
     paginate_by = 50
+
     def get(self, request):
         ctx = {'photos': Photo.objects.all()}
         return render(request, 'main.html', ctx)
@@ -50,7 +51,6 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 class DeletePhotoView(LoginRequiredMixin, DeleteView):
     model = Photo
     success_url = reverse_lazy("main")
-
 
 
 class EditUserView(LoginRequiredMixin, UpdateView):
