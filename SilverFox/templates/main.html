@@ -2,11 +2,9 @@
 
 {% block content %}
 <div id="content">
-<section id="s1">
-    <h2>Najnowsze zdjęcia</h2>
-</section>
-<section id="s2">
-    <div>
+    <h2>Najnowsze zdjęcia</h2><br />
+<section>
+    <div id="photos">
         {% for photo in  photos %}
         <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
         {% empty %}
