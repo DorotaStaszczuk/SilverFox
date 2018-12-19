@@ -19,7 +19,7 @@ img {
     padding-top: 50px;
 }
 
-#footer{
+#footer1{
     grid-row: 3;
     position:fixed;
     width:100%;
@@ -30,6 +30,22 @@ img {
     color: dimgray;
 }
 
+#footer {
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(43, 43, 43);
+  height: 50px;
+  border-top: 2px solid black;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 20px black;
+  bottom:0;
+  width: 100%;
+  text-align: center;
+  color: dimgray;
+}
 
 #s1 {
     grid-column: 1;
