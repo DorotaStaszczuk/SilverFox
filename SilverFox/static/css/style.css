@@ -62,10 +62,10 @@ img {
     font-family: "Avenir Next";
     font-size: 55px;
     padding-left: 15px;
-    padding: 8px;
+    padding: 10px;
     position:absolute;
     top:0;
-    left: 5px;
+    left: 15px;
     text-shadow: 3px 3px 5px black;
 }
 
