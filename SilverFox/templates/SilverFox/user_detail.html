@@ -26,6 +26,7 @@
     {% block content %}
     <div id="bb">
     {% if not object.profile_image %}
+        <p id="aa"> {{ object.username }}</p>
         <p>Brak zdjęcia profilowego</p>
     {% else %}
         <p id="aa"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
