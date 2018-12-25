@@ -3,7 +3,7 @@
 
 {% block content %}
 <div id="bb">
-    <p id="s1">Autor: {{ object.user }}</p>
+    <p id="s1">Autor: <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a></p>
     <p id="s2">Tytuł: {{ object.title }}</p>
     {% if object.description is None %}
         <p>Brak opisu</p>
