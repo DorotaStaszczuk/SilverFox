@@ -47,7 +47,7 @@
     {% for photo in object.photo_set.all %}
     <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
     {% empty %}
-    <h2>Brak zdjęć</h2>
+    <p>Brak zdjęć</p>
     {% endfor %}
     </div>
         {% endblock %}
