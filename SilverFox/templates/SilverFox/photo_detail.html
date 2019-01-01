@@ -2,9 +2,15 @@
 
 
 {% block content %}
+
+    <div>
+        <img src="{{ photo.file.url }}">
+    </div>
+
 <div id="bb">
     <p id="s1">Autor: <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a></p>
     <p id="s2">Tytuł: {{ object.title }}</p>
+
     {% if object.description is None %}
         <p>Brak opisu</p>
     {% else %}
@@ -16,8 +22,6 @@
     <a href="{% url 'delete-photo' pk=object.pk %}"><input type="button" value="Usuń zdjęcie" /></a>
     {% endif %}
 
-    <div>
-        <img src="{{ photo.file.url }}">
-    </div>
+
 </div>
 {% endblock %}
