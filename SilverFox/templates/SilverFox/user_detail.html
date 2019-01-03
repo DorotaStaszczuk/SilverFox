@@ -45,7 +45,7 @@
     <h2>Najnowsze zdjęcia</h2>
 
     {% for photo in object.photo_set.all %}
-    <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
+        <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
     {% empty %}
     <p>Brak zdjęć</p>
     {% endfor %}
