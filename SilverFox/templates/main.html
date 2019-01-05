@@ -6,7 +6,7 @@
 <section>
     <div id="photos">
         {% for photo in  photos %}
-        <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
+        <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
         {% empty %}
         <h2>Brak zdjęć</h2>
         {% endfor %}
