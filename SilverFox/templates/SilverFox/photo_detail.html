@@ -21,10 +21,39 @@
     <p id="s2">Typ filmu: {{ object.film_type }}</p>
     <p id="s2">Nazwa filmu: {{ object.film_name }}</p>
     <p id="s2">Czułość filmu: {{ object.film_iso }}</p>
-    <p id="s2">Przeterminowany: {{ object.film_option1 }}</p>
-    <p id="s2">Podczerwień: {{ object.film_option2 }}</p>
-    <p id="s2">Skan z negatywu: {{ object.photo_option1 }}</p>
-    <p id="s2">Odbitka ciemniowa: {{ object.photo_option2 }}</p>
+
+    <p id="s2">Przeterminowany:
+    {% if object.film_option1 is False %}
+        Nie
+    {% else %}
+        Tak
+    {% endif %}
+    </p>
+
+    <p id="s2">Podczerwień:
+        {% if object.film_option2 is False %}
+            Nie
+        {% else %}
+            Tak
+        {% endif %}
+    </p>
+
+    <p id="s2">Skan z negatywu:
+        {% if object.photo_option1 is False %}
+            Nie
+        {% else %}
+            Tak
+        {% endif %}
+    </p>
+
+    <p id="s2">Odbitka ciemniowa:
+        {% if object.photo_option2 is False %}
+            Nie
+        {% else %}
+            Tak
+        {% endif %}
+    </p>
+
 
     {% if request.user.is_authenticated %}
     <a href="{% url 'edit-photo' pk=object.pk %}"><input type="button" value="Edytuj zdjęcie" /></a>
