@@ -17,10 +17,11 @@
         <p id="s2">Opis: {{ object.description }}</p>
     {% endif %}
 
-    <p id="s2">Aparat: {{ object.camera_name }}</p>
-    <p id="s2">Typ filmu: {{ object.film_type }}</p>
-    <p id="s2">Nazwa filmu: {{ object.film_name }}</p>
-    <p id="s2">Czułość filmu: {{ object.film_iso }}</p>
+
+    <p id="s2">Aparat: {{ object.get_camera_name_display }}</p>
+    <p id="s2">Typ filmu: {{ object.get_film_type_display }}</p>
+    <p id="s2">Nazwa filmu: {{ object.get_film_name_display }}</p>
+    <p id="s2">Czułość filmu: {{ object.get_film_iso_display }}</p>
 
     <p id="s2">Przeterminowany:
     {% if object.film_option1 is False %}
