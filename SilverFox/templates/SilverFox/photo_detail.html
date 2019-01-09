@@ -3,11 +3,12 @@
 
 {% block content %}
 
+<div id="bb">
     <div>
         <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
     </div>
 
-<div id="bb">
+
     <p id="s1">Autor: <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a></p>
     <p id="s2">Tytuł: {{ object.title }}</p>
 
