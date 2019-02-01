@@ -18,18 +18,3 @@ Project is created with:
 * HTML
 * CSS
 
-## Screenshots
-Main site
-![main](media/01.png)
-
-User page
-![user](media/02.png)
-
-Photo page
-![photo](media/03.png)
-
-Logging in
-![login](media/04.png)
-
-Removing account
-![remove](media/05.png)
