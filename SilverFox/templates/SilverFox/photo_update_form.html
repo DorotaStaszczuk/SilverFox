@@ -5,6 +5,7 @@
 <form method="post" action="#" enctype="multipart/form-data">
 {{ form.as_p }}
     <input type="submit" value="Zamień">
+    <a href="{% url 'photo' pk=object.pk %}"><input type="button" value="Cofnij" /></a>
 {% csrf_token %}
 </form>
 {% endblock %}
