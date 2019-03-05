@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy, reverse
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 # Create your views here.
@@ -62,7 +63,11 @@ class EditUserView(LoginRequiredMixin, UpdateView):
         return reverse('user', args=[self.object.pk])
 
 
-class EditPhotoView(LoginRequiredMixin, UpdateView):
+class EditPhotoView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        self.object = self.get_object()
+        return self.request.user == self.object.user
+
     model = Photo
     fields = '__all__'
     exclude = ['date_added']
