@@ -49,7 +49,10 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("main")
 
 
-class DeletePhotoView(LoginRequiredMixin, DeleteView):
+class DeletePhotoView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    def test_func(self):
+        self.object = self.get_object()
+        return self.request.user == self.object.user
     model = Photo
     success_url = reverse_lazy("main")
 
