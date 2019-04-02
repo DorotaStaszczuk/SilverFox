@@ -11,10 +11,8 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 
-# Create your views here.
 class MainSiteView(ListView):
     model = Photo
-    paginate_by = 50
 
     def get(self, request):
         ctx = {'photos': Photo.objects.all()}
