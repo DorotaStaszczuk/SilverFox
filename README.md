@@ -1,20 +1,20 @@
 # SilverFox
 
 ## General info
-My final project for Python course in Coders Lab. Traditional Photography Website.
 
-Work in progress
+Traditional photography sharing website.
 
 ## Functionality
-User may create a new account on the website and update the account by adding a profile picture and description.
-He may add photos to his gallery. Photos of all users are displayed on the main site (sorted by the time
-and date added - newest first). He may login and logout whenever he wants to. If he is logged out he will not have
-full access to the content on the site. The user may delete his photo and delete his account if he wants to.
+
+Multi-page application. Functionalities: creating new account, logging in and out, adding photos, editing profile, removing photos, removing account. Main site with photo gallery of all registered users (sorted by the time
+and date added - newest first). Logged out user doesn’t have full access to the site.
 
 ## Technologies
-Project is created with:
-* Python
-* Django
-* HTML
-* CSS
 
+Project is created with:
+
+- Python
+- Django
+- HTML
+- CSS
+- CSS Grid
