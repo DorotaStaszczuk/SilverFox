@@ -1,16 +1,17 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div id="content">
-    <h2>Najnowsze zdjęcia</h2><br />
-<section>
+  <h2>Najnowsze zdjęcia</h2>
+  <br />
+  <section>
     <div id="photos">
-        {% for photo in  photos %}
-        <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
-        {% empty %}
-        <h2>Brak zdjęć</h2>
-        {% endfor %}
+      {% for photo in photos %}
+      <a href="{% url 'photo' pk=photo.pk %}"
+        ><img src="{{ photo.file.url }}"
+      /></a>
+      {% empty %}
+      <h2>Brak zdjęć</h2>
+      {% endfor %}
     </div>
-</section>
+  </section>
 </div>
 {% endblock %}

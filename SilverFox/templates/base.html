@@ -3,33 +3,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% block head %}
-      <link rel="stylesheet" href="{% static "css/style.css" %}">
-      <title>
-      {% block title %}
-      {% endblock %}
-      </title>
+    {% block head %} <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>{% block title %} {% endblock %}</title>
     {% endblock %}
   </head>
   <body>
-  <header id="header">
-    <span class="silverfox">
-          <a href="/main">SilverFox</a>
+    <header>
+      <span class="silverfox">
+        <a href="/main">SilverFox</a>
       </span>
-      <span class="nav">
-          {% include "menu.html" %}
-      </span>
-
-  </header>
-    <div>
-
-    {% block content %}
-    {% endblock %}
-    </div>
-    <div id="footer">
+      <nav>{% include "menu.html" %}</nav>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
       {% block footer %}
-      <h5> © Copyright 2018 by DS </h5>
+      <p class="footer-text">Copyright © 2018-2020 by DS</p>
       {% endblock %}
-    </div>
+    </footer>
   </body>
 </html>

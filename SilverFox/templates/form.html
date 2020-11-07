@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
-
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Zapisz">
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="Zapisz" />
 </form>
 {% endblock %}
