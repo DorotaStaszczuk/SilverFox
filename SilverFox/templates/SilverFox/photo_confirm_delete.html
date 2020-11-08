@@ -3,39 +3,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% block head %}
-      <link rel="stylesheet" href="{% static "css/style.css" %}">
-      <title>
-      {% block title %}
-      {% endblock %}
-      </title>
+    {% block head %} <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>{% block title %} {% endblock %}</title>
     {% endblock %}
   </head>
   <body>
-  <header id="header">
+    <header id="header">
       <span class="silverfox">
-          <a href="/main">SilverFox</a>
+        <a href="/main">SilverFox</a>
       </span>
-      <span class="nav">
-          {% include "menu.html" %}
-      </span>
-  </header>
-
+      <nav>{% include "menu.html" %}</nav>
+    </header>
 
     {% block content %}
-    <div id="bb">
-    <form action="" method="post">{% csrf_token %}
-        <h2>Czy napewno chcesz usunąć zdjęcie?</h2>
-    <input type="submit" value="Tak, chcę" />
-            <a href="{% url 'photo' pk=object.pk %}"><input type="button" value="Nie" /></a>
+    <form action="" method="post">
+      {% csrf_token %}
+      <h2>Czy napewno chcesz usunąć zdjęcie?</h2>
+      <div>
+        <button type="submit" value="Tak, chcę">Tak, chcę</button>
+        <a href="{% url 'photo' pk=object.pk %}">
+          <button type="button" value="Nie">Nie</button></a
+        >
+      </div>
     </form>
-    </div>
     {% endblock %}
 
-    <div id="footer">
+    <footer>
       {% block footer %}
-        {#© Copyright 2018 by DS#}
+      <p class="footer-text">Copyright © 2018-2020 by DS</p>
       {% endblock %}
-    </div>
+    </footer>
   </body>
 </html>

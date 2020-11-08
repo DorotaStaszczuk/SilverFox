@@ -1,67 +1,52 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
 
-<div id="bb">
+<div class="content">
     <div>
-        <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}"></a>
+        <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}" /></a>
     </div>
 
-
-    <p id="s1">Autor: <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a></p>
-    <p id="s2">Tytuł: {{ object.title }}</p>
+    <p>
+        Autor:
+        <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a>
+    </p>
+    <p>Tytuł: {{ object.title }}</p>
 
     {% if object.description is None %}
-        <p>Brak opisu</p>
+    <p>Brak opisu</p>
     {% else %}
-        <p id="s2">Opis: {{ object.description }}</p>
+    <p>Opis: {{ object.description }}</p>
     {% endif %}
 
+    <p>Aparat: {{ object.get_camera_name_display }}</p>
+    <p>Typ filmu: {{ object.get_film_type_display }}</p>
+    <p>Nazwa filmu: {{ object.get_film_name_display }}</p>
+    <p>Czułość filmu: {{ object.get_film_iso_display }}</p>
 
-    <p id="s2">Aparat: {{ object.get_camera_name_display }}</p>
-    <p id="s2">Typ filmu: {{ object.get_film_type_display }}</p>
-    <p id="s2">Nazwa filmu: {{ object.get_film_name_display }}</p>
-    <p id="s2">Czułość filmu: {{ object.get_film_iso_display }}</p>
-
-    <p id="s2">Przeterminowany:
-    {% if object.film_option1 is False %}
-        Nie
-    {% else %}
-        Tak
-    {% endif %}
+    <p>
+        Przeterminowany: {% if object.film_option1 is False %} Nie {% else %}
+        Tak {% endif %}
     </p>
 
-    <p id="s2">Podczerwień:
-        {% if object.film_option2 is False %}
-            Nie
-        {% else %}
-            Tak
-        {% endif %}
+    <p>
+        Podczerwień: {% if object.film_option2 is False %} Nie {% else %} Tak {% endif %}
     </p>
 
-    <p id="s2">Skan z negatywu:
-        {% if object.photo_option1 is False %}
-            Nie
-        {% else %}
-            Tak
-        {% endif %}
+    <p>
+        Skan z negatywu: {% if object.photo_option1 is False %} Nie {% else %}
+        Tak {% endif %}
     </p>
 
-    <p id="s2">Odbitka ciemniowa:
-        {% if object.photo_option2 is False %}
-            Nie
-        {% else %}
-            Tak
-        {% endif %}
+    <p>
+        Odbitka ciemniowa: {% if object.photo_option2 is False %} Nie {% else %}
+        Tak {% endif %}
     </p>
-
 
     {% if request.user.is_authenticated %}
-    <a href="{% url 'edit-photo' pk=object.pk %}"><input type="button" value="Edytuj zdjęcie" /></a>
-    <a href="{% url 'delete-photo' pk=object.pk %}"><input type="button" value="Usuń zdjęcie" /></a>
+    <a href="{% url 'edit-photo' pk=object.pk %}"
+        ><button type="button" value="Edytuj zdjęcie">Edytuj zdjęcie</button></a>
+    <a href="{% url 'delete-photo' pk=object.pk %}"
+        ><button type="button" value="Usuń zdjęcie">Usuń zdjęcie</button></a>
     {% endif %}
-
-
 </div>
 {% endblock %}
