@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<form method="post" action="#" enctype="multipart/form-data">
-{{ form.as_p }}
-    <input type="submit" value="Zamień">
-    <a href="{% url 'photo' pk=object.pk %}"><input type="button" value="Cofnij" /></a>
-{% csrf_token %}
+    <form method="post" action="#" enctype="multipart/form-data">
+        {{ form.as_p }}
+        <div>
+            <button type="submit" value="Zamień">Zamień</button>
+            <a href="{% url 'photo' pk=object.pk %}"><button type="button" value="Cofnij">Cofnij</button></a>
+        </div>
+        {% csrf_token %}
 </form>
 {% endblock %}

@@ -6,57 +6,58 @@
     {% block head %}
       <link rel="stylesheet" href="{% static "css/style.css" %}">
       <title>
-        {% block title %}
-        {% endblock %}
+          {% block title %}
+          {% endblock %}
       </title>
     {% endblock %}
   </head>
   <body>
-  <header id="header">
-      <span class="silverfox">
-          <a href="/main">SilverFox</a>
-      </span>
-      <span class="nav">
-          {% include "menu.html" %}
-      </span>
-
-  </header>
+      <header>
+          <span class="silverfox">
+              <a href="/main">SilverFox</a>
+          </span>
+          <nav>
+              {% include "menu.html" %}
+          </nav>
+      </header>
     <div id="user_detail">
 
-    {% block content %}
-    <div id="bb">
-    {% if not object.profile_image %}
-        <p id="aa"> {{ object.username }}</p>
-        <p>Brak zdjęcia profilowego</p>
-    {% else %}
-        <p id="aa"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
-    {% endif %}
+        {% block content %}
+        <div class="content">
+            {% if not object.profile_image %}
+                <p class="username"> {{ object.username }}</p>
+                <p>Brak zdjęcia profilowego</p>
+            {% else %}
+                <p class="username"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
+            {% endif %}
 
-    {% if object.description is None %}
-        <p>Brak opisu</p>
-    {% else %}
-        <p>{{ object.description }}</p>
-    {% endif %}
+            {% if object.description is None %}
+                <p>Brak opisu</p>
+            {% else %}
+                <p>{{ object.description }}</p>
+            {% endif %}
 
-        <a href="{% url 'edit-user' pk=object.pk %}"><input type="button" value="Edytuj profil" /></a>
-        <a href="{% url 'add-photo' %}"><input type="button" value="Dodaj nowe zdjęcie" /></a>
-        <a href="{% url 'delete-user' pk=object.pk %}"><input type="button" value="Usuń konto" /></a>
+            <div>
+                <a href="{% url 'edit-user' pk=object.pk %}"><button type="button" value="Edytuj profil">Edytuj profil</button></a>
+                <a href="{% url 'add-photo' %}"><button type="button" value="Dodaj nowe zdjęcie">Dodaj nowe zdjęcie</button></a>
+                <a href="{% url 'delete-user' pk=object.pk %}"><button type="button" value="Usuń konto">Usuń konto</button></a>
+            </div>
 
-    <h2>Najnowsze zdjęcia</h2>
+            <h2>Najnowsze zdjęcia</h2>
 
-    {% for photo in object.photo_set.all %}
-        <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
-    {% empty %}
-    <p>Brak zdjęć</p>
-    {% endfor %}
-    </div>
+            {% for photo in object.photo_set.all %}
+                <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
+            {% empty %}
+                <p>Brak zdjęć</p>
+            {% endfor %}
+        </div>
         {% endblock %}
     </div>
-        <div id="footer">
+        <footer>
           {% block footer %}
-            <h5> © Copyright 2018 by DS </h5>
+          <p class="footer-text">Copyright © 2018-2020 by DS</p>
           {% endblock %}
-        </div>
+        </footer>
   </body>
 </html>
 
