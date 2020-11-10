@@ -17,4 +17,4 @@ Project is created with:
 - Django
 - HTML
 - CSS
-- CSS Grid
+- PostgreSQL
