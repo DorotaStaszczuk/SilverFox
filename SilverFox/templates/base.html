@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% block head %} <link rel="stylesheet" href="{% static "css/style.css" %}">
+    {% block head %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{% block title %} {% endblock %}</title>
     {% endblock %}
   </head>
   <body>
     <header>
       <span class="silverfox">
-        <a href="/main">SilverFox</a>
+        <h1><a href="/main">SilverFox</a></h1>
       </span>
       <nav>{% include "menu.html" %}</nav>
     </header>
