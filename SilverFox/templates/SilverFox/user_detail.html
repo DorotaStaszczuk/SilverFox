@@ -1,64 +1,29 @@
-{% load static %}
+{% extends 'base.html' %}
+{% block content %}
+    {% if not object.profile_image %}
+        <p class="username"> {{ object.username }}</p>
+        <p>Brak zdjęcia profilowego</p>
+    {% else %}
+        <p class="username"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
+    {% endif %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    {% block head %}
-      <link rel="stylesheet" href="{% static "css/style.css" %}">
-      <title>
-          {% block title %}
-          {% endblock %}
-      </title>
-    {% endblock %}
-  </head>
-  <body>
-      <header>
-          <span class="silverfox">
-              <a href="/main">SilverFox</a>
-          </span>
-          <nav>
-              {% include "menu.html" %}
-          </nav>
-      </header>
-    <div id="user_detail">
+    {% if object.description is None %}
+        <p>Brak opisu</p>
+    {% else %}
+        <p>{{ object.description }}</p>
+    {% endif %}
 
-        {% block content %}
-        <div class="content">
-            {% if not object.profile_image %}
-                <p class="username"> {{ object.username }}</p>
-                <p>Brak zdjęcia profilowego</p>
-            {% else %}
-                <p class="username"><img id="profile" src="{{ object.profile_image.url }}"> {{ object.username }}</p>
-            {% endif %}
-
-            {% if object.description is None %}
-                <p>Brak opisu</p>
-            {% else %}
-                <p>{{ object.description }}</p>
-            {% endif %}
-
-            <div>
-                <a href="{% url 'edit-user' pk=object.pk %}"><button type="button" value="Edytuj profil">Edytuj profil</button></a>
-                <a href="{% url 'add-photo' %}"><button type="button" value="Dodaj nowe zdjęcie">Dodaj nowe zdjęcie</button></a>
-                <a href="{% url 'delete-user' pk=object.pk %}"><button type="button" value="Usuń konto">Usuń konto</button></a>
-            </div>
-
-            <h2>Najnowsze zdjęcia</h2>
-
-            {% for photo in object.photo_set.all %}
-                <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
-            {% empty %}
-                <p>Brak zdjęć</p>
-            {% endfor %}
-        </div>
-        {% endblock %}
+    <div>
+        <a href="{% url 'edit-user' pk=object.pk %}"><button type="button" value="Edytuj profil">Edytuj profil</button></a>
+        <a href="{% url 'add-photo' %}"><button type="button" value="Dodaj nowe zdjęcie">Dodaj nowe zdjęcie</button></a>
+        <a href="{% url 'delete-user' pk=object.pk %}"><button type="button" value="Usuń konto">Usuń konto</button></a>
     </div>
-        <footer>
-          {% block footer %}
-          <p class="footer-text">Copyright © 2018-2020 by DS</p>
-          {% endblock %}
-        </footer>
-  </body>
-</html>
 
+    <h2>Najnowsze zdjęcia</h2>
 
+    {% for photo in object.photo_set.all %}
+        <a href="{% url 'photo' pk=photo.pk %}"><img src="{{ photo.file.url }}"></a>
+    {% empty %}
+        <p>Brak zdjęć</p>
+    {% endfor %}
+{% endblock %}
