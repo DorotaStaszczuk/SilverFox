@@ -1,37 +1,13 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html>
-  <head>
-    {% block head %} <link rel="stylesheet" href="{% static "css/style.css" %}">
-    <title>{% block title %} {% endblock %}</title>
-    {% endblock %}
-  </head>
-  <body>
-    <header id="header">
-      <span class="silverfox">
-        <a href="/main">SilverFox</a>
-      </span>
-      <nav>{% include "menu.html" %}</nav>
-    </header>
-
-    {% block content %}
-    <form action="" method="post">
-      {% csrf_token %}
-      <h2>Czy napewno chcesz usunąć zdjęcie?</h2>
-      <div>
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>Czy napewno chcesz usunąć zdjęcie?</h2>
+    <div>
         <button type="submit" value="Tak, chcę">Tak, chcę</button>
         <a href="{% url 'photo' pk=object.pk %}">
-          <button type="button" value="Nie">Nie</button></a
-        >
-      </div>
-    </form>
-    {% endblock %}
-
-    <footer>
-      {% block footer %}
-      <p class="footer-text">Copyright © 2018-2020 by DS</p>
-      {% endblock %}
-    </footer>
-  </body>
-</html>
+        <button type="button" value="Nie">Nie</button></a
+      >
+    </div>
+</form>
+{% endblock %}
