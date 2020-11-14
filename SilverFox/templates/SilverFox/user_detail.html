@@ -8,12 +8,12 @@
     {% endif %}
 
     {% if object.description is None %}
-        <p>Brak opisu</p>
+        <p class="user-description">Brak opisu</p>
     {% else %}
-        <p>{{ object.description }}</p>
+        <p class="user-description">{{ object.description }}</p>
     {% endif %}
 
-    <div>
+    <div class="buttons-container">
         <a href="{% url 'edit-user' pk=object.pk %}"><button type="button" value="Edytuj profil">Edytuj profil</button></a>
         <a href="{% url 'add-photo' %}"><button type="button" value="Dodaj nowe zdjęcie">Dodaj nowe zdjęcie</button></a>
         <a href="{% url 'delete-user' pk=object.pk %}"><button type="button" value="Usuń konto">Usuń konto</button></a>
