@@ -82,7 +82,7 @@ h2 {
     color: orangered;
     font-size: 24px;
     font-family: "Arial Black";
-    margin-bottom: 25px;
+    margin-bottom: 50px;
     align-self: flex-start;
 }
 
@@ -112,6 +112,7 @@ p {
 
 #profile {
     height: 130px;
+    margin: 0;
 }
 
 form {
@@ -132,9 +133,19 @@ button {
     padding: 5px;
 }
 
+.buttons-container {
+    align-self: flex-start;
+    margin-bottom: 60px;
+}
+
 .username {
     font-size: 40px;
     color: orangered;
+    align-self: flex-start;
+}
+
+.user-description {
+    margin: 30px 0;
 }
 
 footer {
