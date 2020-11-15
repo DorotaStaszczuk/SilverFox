@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+<div>
     <h2>Logowanie</h2>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %} {{ form.as_p }}
-        <button type="submit" value="Zaloguj się">Zaloguj się</button>
+        <button class="form-buttons-container" type="submit" value="Zaloguj się">Zaloguj się</button>
     </form>
+</div>
 {% endblock %}
