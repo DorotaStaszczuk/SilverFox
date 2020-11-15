@@ -2,39 +2,50 @@
 {% block content %}
     <div>
         <a href="{{ photo.file.url }}"><img src="{{ photo.file.url }}" /></a>
+
+        <div class="photo-detail">
+            <p>Autor:</p><p class="detail"><a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a></p>
+            <p>Tytuł:</p> <p class="detail">{{ object.title }}</p>
+
+            {% if object.description is None %}
+                <p>Opis:</p><p class="detail">Brak opisu</p>
+            {% else %}
+                <p>Opis:</p><p class="detail">{{ object.description }}</p>
+            {% endif %}
+
+            <p>Aparat:</p><p class="detail">{{ object.get_camera_name_display }}</p>
+            <p>Typ filmu:</p><p class="detail">{{ object.get_film_type_display }}</p>
+            <p>Nazwa filmu:</p><p class="detail">{{ object.get_film_name_display }}</p>
+            <p>Czułość filmu:</p><p class="detail">{{ object.get_film_iso_display }}</p>
+
+            <p>Przeterminowany:</p>
+                {% if object.film_option1 is False %}
+                <p class="detail">Nie</p>
+                {% else %}
+                <p class="detail">Tak</p>
+                {% endif %}
+            <p>Podczerwień:</p>
+                {% if object.film_option2 is False %}
+                <p class="detail">Nie</p>
+                {% else %}
+                <p class="detail">Tak</p>
+                {% endif %}
+            <p>Skan z negatywu:</p>
+                {% if object.photo_option1 is False %}
+                <p class="detail">Nie</p>
+                {% else %}
+                <p class="detail">Tak</p>
+                {% endif %}
+
+            <p>Odbitka ciemniowa:</p>
+                {% if object.photo_option2 is False %}
+                <p class="detail">Nie</p>
+                {% else %}
+                <p class="detail">Tak</p>
+                {% endif %}
+
+        </div>
     </div>
-    <p>
-        Autor:
-        <a href="{% url 'user' pk=object.user.pk %}"> {{ object.user }}</a>
-    </p>
-    <p>Tytuł: {{ object.title }}</p>
-
-    {% if object.description is None %}
-        <p>Brak opisu</p>
-    {% else %}
-        <p>Opis: {{ object.description }}</p>
-    {% endif %}
-
-    <p>Aparat: {{ object.get_camera_name_display }}</p>
-    <p>Typ filmu: {{ object.get_film_type_display }}</p>
-    <p>Nazwa filmu: {{ object.get_film_name_display }}</p>
-    <p>Czułość filmu: {{ object.get_film_iso_display }}</p>
-
-    <p>
-        Przeterminowany: {% if object.film_option1 is False %} Nie {% else %}
-        Tak {% endif %}
-    </p>
-    <p>
-        Podczerwień: {% if object.film_option2 is False %} Nie {% else %} Tak {% endif %}
-    </p>
-    <p>
-        Skan z negatywu: {% if object.photo_option1 is False %} Nie {% else %}
-        Tak {% endif %}
-    </p>
-    <p>
-        Odbitka ciemniowa: {% if object.photo_option2 is False %} Nie {% else %}
-        Tak {% endif %}
-    </p>
 
     {% if request.user.is_authenticated %}
     <div>
