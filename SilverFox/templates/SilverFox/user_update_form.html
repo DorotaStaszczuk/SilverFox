@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
     <form method="post" action="#" enctype="multipart/form-data">
         {{ form.as_p }}
-        <div>
+        <div class="form-buttons-container">
             <button type="submit" value="Dodaj">Dodaj</button>
             <a href="{% url 'user' pk=object.pk %}"><button type="button" value="Cofnij">Cofnij</button></a>
         </div>

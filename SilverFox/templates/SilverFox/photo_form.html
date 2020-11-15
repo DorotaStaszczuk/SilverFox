@@ -4,7 +4,7 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <div>
+            <div class="form-buttons-container">
                 <button type="submit" value="Dodaj zdjęcie">Dodaj zdjęcie</button>
             </div>
         </form>
