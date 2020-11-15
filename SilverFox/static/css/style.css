@@ -123,6 +123,12 @@ form {
     align-items: flex-start;
 }
 
+form ul {
+    color: gray;
+    list-style-type: none;
+    padding-bottom: 20px;
+}
+
 button {
     color: white;
     background-color: tomato;
@@ -136,6 +142,10 @@ button {
 .buttons-container {
     align-self: flex-start;
     margin-bottom: 60px;
+}
+
+.form-buttons-container {
+    margin-top: 40px;
 }
 
 .username {
@@ -176,6 +186,12 @@ footer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     font-weight: 700;
+}
+
+.helptext {
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
 }
 
 @media (max-width: 1200px) {
