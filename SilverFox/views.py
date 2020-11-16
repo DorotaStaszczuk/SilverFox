@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 
 class MainSiteView(ListView):
     model = Photo
-
+    paginate_by = 10
     def get(self, request):
         ctx = {'photos': Photo.objects.all()}
         return render(request, 'main.html', ctx)
